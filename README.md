@@ -30,10 +30,10 @@ git clone --depth 1 https://github.com/AstroNvim/AstroNvim $env:LOCALAPPDATA\nvi
 
 ```shell
 # Linux
-git clone https://github.com/MaoX-Yu/astronvim_config.git ~/.config/nvim/lua/user
+git clone https://github.com/MaoX-Yu/astronvim-config.git ~/.config/nvim/lua/user
 
 # Windows
-git clone https://github.com/MaoX-Yu/astronvim_config.git $env:LOCALAPPDATA\nvim\lua\user
+git clone https://github.com/MaoX-Yu/astronvim-config.git $env:LOCALAPPDATA\nvim\lua\user
 ```
 
 #### Start Neovim
