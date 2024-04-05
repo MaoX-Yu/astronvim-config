@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -27,10 +25,14 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
-        relativenumber = true, -- sets vim.opt.relativenumber
+        listchars = "nbsp:+,space:·,tab:→ ,trail:-",
+        mouse = "",
         number = true, -- sets vim.opt.number
+        relativenumber = true, -- sets vim.opt.relativenumber
+        scrolloff = 8,
+        sidescrolloff = 8,
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
       },
       g = { -- vim.g.<key>
@@ -67,13 +69,37 @@ return {
         },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
+        -- ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+        -- my config
+        ["Q"] = { "q", desc = "Create macros" },
+        ["q"] = { "@", desc = "Use macros" },
+        ["<C-a>"] = { "ggvG$", desc = "Select all" },
+        ["gh"] = { "^", desc = "Move to the start of line" },
+        ["gl"] = { "$", desc = "Move to the end of line" },
+        -- rename
+        ["<leader>r"] = { name = "󰑕 Refactor" },
+        ["<leader>rn"] = {
+          function() vim.lsp.buf.rename() end,
+          desc = "Rename current symbol",
+        },
+        ["<leader><leader>"] = { function() require("telescope.builtin").find_files() end, desc = "Find files" },
+        -- lazy
+        ["<leader>L"] = { "<cmd>Lazy<cr>", desc = "Lazy" },
+      },
+      v = {
+        -- my config
+        ["gh"] = { "^", desc = "Move to the start of line" },
+        ["gl"] = { "$", desc = "Move to the end of line" },
       },
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
+
+        --my config
+        ["<esc><esc>"] = { "<c-\\><c-n>", desc = "Enter normal mode" },
       },
     },
   },
